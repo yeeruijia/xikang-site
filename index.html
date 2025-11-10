@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>西康酒｜老厂好酒，新派表达</title>
+    <title>西康酒业｜老厂好酒，新派表达</title>
     <!-- 预连接，加速微信/移动端握手 -->
     <link rel="preconnect" href="https://yeeruijia.github.io" crossorigin>
     <!-- Font Awesome 图标库 -->
@@ -104,11 +104,34 @@
             font-size: 0.9em;
         }
         
+        /* 导航滑动提示 */
+        .nav-hint {
+            display: none;
+            text-align: center;
+            font-size: 12px;
+            color: #9a7b4f;
+            padding: 4px 0;
+            background: rgba(154, 123, 79, 0.1);
+        }
+        
+        .nav-hint i {
+            margin-right: 4px;
+            animation: slide-hint 2s ease-in-out infinite;
+        }
+        
+        @keyframes slide-hint {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+        
         /* 手机端导航图标稍小 */
         @media (max-width: 768px) {
             nav a i {
                 margin-right: 4px;
                 font-size: 0.85em;
+            }
+            .nav-hint {
+                display: block;
             }
         }
         
@@ -167,41 +190,16 @@
             font-weight: 600;
         }
         
-        /* 品牌故事背景图 */
-        .brand-story {
-            position: relative;
-        }
-        
-        .brand-story#story {
-            background-image: url('西康酒业.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            position: relative;
-        }
-        
-        /* 确保背景图在移动端也能显示 */
-        @media (max-width: 768px) {
-            .brand-story#story {
-                background-attachment: scroll;
-            }
-        }
-        
-        .brand-story#story::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.75);
-            z-index: 0;
-        }
-        
-        .brand-story#story .container {
-            position: relative;
-            z-index: 1;
+        /* 企业介绍图片样式 */
+        .enterprise-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 40px auto;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 2px solid #e4dccf;
         }
         
         /* 质量与安全背书 */
@@ -282,7 +280,7 @@
         
         /* 质量与安全背书第一张图向右微调 */
         .cert-card:nth-child(1) .cert-thumb {
-            transform: translateX(12px);
+            transform: translateX(20px);
         }
         
         /* 荣誉与见证图片 */
@@ -427,15 +425,9 @@
                 flex-shrink: 0;
             }
             .brand-story, .products, .certifications, .contact { padding: 48px 0; }
-            /* 手机端品牌故事背景图 */
-            .brand-story#story {
-                background-size: cover;
-                background-position: center;
-                background-attachment: scroll;
-                min-height: 400px;
-            }
-            .brand-story#story::before {
-                background: rgba(255, 255, 255, 0.6);
+            .enterprise-image {
+                margin: 30px auto;
+                max-width: 100%;
             }
             section h2 { font-size: 26px; margin-bottom: 24px; }
             .cert-card {
@@ -452,7 +444,7 @@
             .cert-card:nth-child(1) .cert-thumb,
             .cert-card:nth-child(2) .cert-thumb { height: 340px; }
             .cert-card:nth-child(1) .cert-thumb {
-                transform: translateX(8px);
+                transform: translateX(15px);
             }
             .cert-thumb { height: 240px; }
             .cert-code {
@@ -512,7 +504,7 @@
     <header>
         <div class="container">
             <img src="品牌.png" alt="西康酒品牌" class="logo">
-            <h1><i class="fas fa-wine-bottle" style="font-size: 0.8em; margin-right: 12px; vertical-align: middle;"></i>西康酒</h1>
+            <h1>西康酒业</h1>
             <p class="tagline"><i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>1981年建厂 · <i class="fas fa-map-marked-alt" style="margin-right: 6px;"></i>中国白酒金三角 · <i class="fas fa-star" style="margin-right: 6px;"></i>名优老窖池群</p>
             <p class="slogan"><i class="fas fa-gem" style="margin-right: 8px;"></i>老厂好酒 · 新派表达</p>
         </div>
@@ -520,6 +512,9 @@
     
     <nav>
         <div class="container">
+            <div class="nav-hint">
+                <i class="fas fa-arrows-alt-h"></i>左右滑动查看更多
+            </div>
             <ul>
                 <li><a href="#story"><i class="fas fa-book-open"></i> 品牌故事</a></li>
                 <li><a href="#products"><i class="fas fa-wine-bottle"></i> 产品系列</a></li>
@@ -583,6 +578,7 @@
     <section class="brand-story" id="history">
         <div class="container">
             <h2>历史与发展</h2>
+            <img src="西康酒业.png" alt="西康酒业" class="enterprise-image">
             <div class="story-content">
                 <p>西康酒业创立于1981年，由叶长鸿先生发起。企业从最初的区域化小规模酿造起步，逐步形成以“真诚、守信、质优、勤奋、务实、开拓”为核心的企业文化。四十余年来，我们在传承传统固态发酵工艺的同时，持续完善质量管理与食品安全体系，先后通过ISO9001与HACCP体系认证，让每一批酒都做到可追溯、可验证。</p>
                 <p style="margin-top:18px;">我们相信“质量第一”。对西康而言，质量不是一句口号，而是一整套流程的严格执行：原料甄选、曲药自制、窖池养护、酒体设计、长期储存，再到出厂复检与风味复核。我们也同样重视诚信与服务——“质量如生命，诚信重泰山，服务胜广告”。因此，无论是ToB原酒供应还是C端瓶装产品，我们始终把消费者的真实体验放在最前面。</p>
@@ -735,7 +731,7 @@
     
     <footer>
         <div class="container">
-            <p>西康酒｜1981年建厂 · 中国白酒金三角 · 名优老窖池群</p>
+            <p>西康酒业｜1981年建厂 · 中国白酒金三角 · 名优老窖池群</p>
             <p>全系52°浓香型纯粮酒｜ISO9001 + HACCP双体系认证</p>
             <p style="margin-top: 20px; font-size: 12px;">饮酒需适量，请勿酒后驾车。</p>
         </div>
