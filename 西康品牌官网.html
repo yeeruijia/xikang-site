@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西康酒｜老厂好酒，新派表达</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif;
+            background: #f7f2e9;
+            color: #2d2d2d;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部 */
+        header {
+            background: linear-gradient(135deg, #f7f2e9 0%, #e8dcc8 100%);
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 3px solid #9a7b4f;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        h1 {
+            font-size: 48px;
+            color: #1f1f1f;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+        
+        .tagline {
+            font-size: 24px;
+            color: #6b6b6b;
+            margin-bottom: 20px;
+        }
+        
+        .slogan {
+            font-size: 32px;
+            color: #8b6b3c;
+            font-weight: 800;
+        }
+        
+        /* 导航 */
+        nav {
+            background: #ffffff;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2d2d2d;
+            font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #9a7b4f;
+        }
+        
+        /* 品牌故事 */
+        .brand-story {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .brand-story h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1f1f1f;
+        }
+        
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 20px;
+            line-height: 2;
+            text-align: justify;
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .highlight-card {
+            background: #f7f2e9;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e4dccf;
+        }
+        
+        .highlight-card h3 {
+            font-size: 24px;
+            color: #8b6b3c;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-card p {
+            font-size: 16px;
+            color: #4a4a4a;
+        }
+        
+        /* 产品展示 */
+        .products {
+            padding: 80px 0;
+            background: #f7f2e9;
+        }
+        
+        .products h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1f1f1f;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 420px; /* 统一卡片主图高度 */
+            object-fit: cover;
+            background: #f7f2e9;
+        }
+        
+        .product-info {
+            padding: 30px;
+        }
+        
+        .product-name {
+            font-size: 28px;
+            color: #1f1f1f;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .product-desc {
+            font-size: 16px;
+            color: #6b6b6b;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .product-price {
+            font-size: 32px;
+            color: #9a7b4f;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .product-tag {
+            display: inline-block;
+            background: #e4dccf;
+            color: #8b6b3c;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        /* 证书背书 */
+        .certifications {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .certifications h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1f1f1f;
+        }
+        
+        /* 证书三列对齐：每列 = 文案卡片 + 对应图片 */
+        .cert-columns { display:grid; grid-template-columns: repeat(3, 1fr); gap:30px; }
+        .cert-grid { display:block; }
+        
+        .cert-card {
+            background: #f7f2e9;
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid #e4dccf;
+        }
+        
+        .cert-card h3 {
+            font-size: 24px;
+            color: #8b6b3c;
+            margin-bottom: 20px;
+        }
+        
+        .cert-card p {
+            font-size: 16px;
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .cert-code {
+            font-family: monospace;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        .cert-thumb { width:100%; height:260px; object-fit:contain; border-radius:12px; border:1px solid #e4dccf; background:#fff; margin-top:14px; }
+        
+        /* 联系信息 */
+        .contact {
+            padding: 80px 0;
+            background: #f7f2e9;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #1f1f1f;
+        }
+        
+        .contact-info {
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #2d2d2d;
+        }
+        
+        .contact-info a {
+            color: #9a7b4f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #2d2d2d;
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .slogan {
+                font-size: 24px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                gap: 20px;
+            }
+        }
+
+        /* 统一图集尺寸与工艺全幅样式 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .highlights-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .gallery-grid img {
+            width: 100%;
+            height: 220px; /* 统一高度 */
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #e4dccf;
+            background: #fff;
+        }
+        .fullrow-image {
+            width: 100%;
+            height: 380px; /* 调低高度，确保完整展示 */
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid #e4dccf;
+            background: #fff;
+        }
+        .fullrow-image--small { height: 240px; }
+        .overlay-hero {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid #9a7b4f;
+        }
+        .overlay-hero::after {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.25));
+            border-radius: 0;
+        }
+        .overlay-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-align: left;
+        }
+
+        /* 门店区布局 */
+        .store-wrap {
+            display: grid;
+            grid-template-columns: 520px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .store-hero {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid #e4dccf;
+            background: #fff;
+        }
+        .store-info h3 { font-size: 28px; margin-bottom: 12px; color:#1f1f1f; }
+        .store-info p { font-size: 18px; color:#2d2d2d; margin: 6px 0; }
+        .store-info ul { margin-top: 10px; padding-left: 20px; }
+        .store-info li { margin: 6px 0; color:#4a4a4a; }
+        /* 门店四图：与门店大图风格统一（圆角+细边框，尺寸一致） */
+        .store-gallery img {
+            height: 340px;
+            width: 100%;
+            object-fit: cover;
+            background: #fff;
+            border: 2px solid #e4dccf;
+            border-radius: 18px;
+        }
+
+        /* 头部：整体居中，品牌图置于标题下方 */
+        .header-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
+        .header-text { text-align:center; }
+        .logo { width:110px; height:110px; }
+        @media (max-width: 768px) {
+            .header-wrap { flex-direction:column-reverse; align-items:center; }
+            .header-text { text-align:center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-wrap">
+            <img src="品牌.png" alt="西康品牌" class="logo">
+            <div class="header-text">
+                <h1>西康酒</h1>
+                <p class="tagline">1981年建厂 · 中国白酒金三角 · 名优老窖池群</p>
+                <p class="slogan">老厂好酒 · 新派表达</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#story">品牌故事</a></li>
+                <li><a href="#products">产品系列</a></li>
+                <li><a href="#store">线下门店</a></li>
+                <li><a href="#certifications">质量背书</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 企业介绍（重构：背景横幅 + 图集统一尺寸） -->
+    <section class="overlay-hero" id="about" style="background-image:url('西康酒业.png'); padding: 80px 0;">
+        <div class="container overlay-content">
+            <h2 style="font-size:44px; margin-bottom:16px;">企业介绍</h2>
+            <p style="font-size:18px; max-width:900px; line-height:2;">
+                西康酒业创立于1981年（叶长鸿）。自建厂以来，我们几代人始终奉行“真诚、守信、质优、勤奋、务实、开拓”的企业宗旨，艰苦创业，赢得了合作伙伴与广大消费者的赞赏。
+                公司坚持“质量第一”的生产原则与“质量如生命，诚信重泰山，服务胜广告”的经营理念，在传承与创新之间，持续为消费者提供踏实、可靠、舒服的好酒。
+            </p>
+        </div>
+    </section>
+    <section class="brand-story" style="padding-top:40px;">
+        <div class="container">
+            <div class="gallery-grid">
+                <img src="企业介绍1.png" alt="企业形象1"/>
+                <img src="企业介绍2.png" alt="企业形象2"/>
+                <img src="企业介绍3.png" alt="企业形象3"/>
+                <img src="企业介绍4.png" alt="企业形象4"/>
+                <img src="企业介绍5.png" alt="企业形象5"/>
+                <img src="企业介绍6.png" alt="企业形象6"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- 线下门店：乐山西康品鉴馆（新增） -->
+    <section class="brand-story" id="store">
+        <div class="container">
+            <h2>线下门店｜乐山西康品鉴馆</h2>
+            <div class="store-wrap" style="margin-top:20px;">
+                <img src="西康品鉴馆外部1.jpg" alt="门店外部" class="store-hero"/>
+            <div class="store-info">
+                    <h3>到店信息</h3>
+                    <p><strong>地址：</strong>乐山市市中区嘉祥路1089、1091号1层</p>
+                    <p><strong>电话：</strong>156 8132 5111</p>
+                <p><strong>生产地址：</strong>四川省雅安市名山区茅河乡香水村</p>
+                    <ul>
+                        <li>线下可免费品鉴（常备多款试饮）</li>
+                        <li>支持企业团购与礼盒定制</li>
+                        <li>承接婚宴定制（可按喜宴预算与风格搭配）</li>
+                        <li>可查证书原件与编号，价目公开透明</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gallery-grid grid-2 store-gallery" style="margin-top:24px;">
+                <img src="西康品鉴馆1.jpg" alt="门店内景1"/>
+                <img src="西康品鉴馆2.jpg" alt="门店内景2"/>
+                <img src="婚宴定制西康酒.jpg" alt="婚宴定制案例1"/>
+                <img src="婚宴定制西康酒1.jpg" alt="婚宴定制案例2"/>
+            </div>
+        </div>
+    </section>
+    <section class="brand-story" id="story">
+        <div class="container">
+            <h2>品牌故事</h2>
+            <div class="story-content">
+                <p>1981年，一家立足四川"中国白酒金三角"的酿酒企业诞生。四十余年里，我们把重心始终放在"酒体的干净与稳定"——坚持核心房区名优老窖池群，保护历经岁月的窖泥与微生物群；同时建立覆盖生产与出厂的质量管理与HACCP体系，确保每一批酒可追溯、可验证。</p>
+                <p style="margin-top: 30px;">西康相信，好酒并不依赖夸张叙事，而是端起来的一瞬：香气舒展、入口柔顺、回味干净。今天，我们用更贴近日常的方式呈现52°浓香纯粮：十五年（设计师瓶）与龙瓶，分别对应礼赠与宴请的不同场合；九年让更多人轻松享受稳定好味；原浆亲民而不将就；锦观古镇老酒因时光稀缺而珍贵。</p>
+                <p style="margin-top: 30px;">好酒回归日常，这是我们的答案。欢迎到乐山品鉴馆试饮，喝得明白、买得安心。</p>
+            </div>
+            
+            <div class="highlights highlights-2">
+                <div class="highlight-card">
+                    <h3>1981年建厂</h3>
+                    <p>四十余年专注酿造<br>积淀深厚底蕴</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>名优老窖池群</h3>
+                    <p>核心产区认定<br>40年以上窖池</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>双体系认证</h3>
+                    <p>ISO9001 + HACCP<br>批批可追溯</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>52°浓香纯粮</h3>
+                    <p>全系固态发酵<br>入口舒服、回味干净</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 工艺展示（新增） -->
+    <section class="products" id="craft">
+        <div class="container">
+            <h2>匠心工艺</h2>
+            <!-- 全幅展示两排：包曲一排、窖池一排（加标题标签） -->
+            <h3 class="subtitle" style="font-size:28px; margin: 10px 0 12px; color:#1f1f1f;">自制包曲</h3>
+            <img src="匠心传承-自制包曲.png" class="fullrow-image fullrow-image--small" alt="自制包曲">
+            <div style="height:20px"></div>
+            <h3 class="subtitle" style="font-size:28px; margin: 10px 0 12px; color:#1f1f1f;">黄泥窖池</h3>
+            <img src="匠心传承-黄泥窖池制造过程.png" class="fullrow-image" alt="黄泥窖池制造过程">
+            <div class="story-content" style="margin-top:24px;">
+                <p>我们坚持自制包曲，控制曲温曲湿，让糖化与发酵更稳定、风味更有层次；黄泥老窖的维护与复壮，确保微生物群落健康活跃，使酒体更干净、更顺更稳。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 历史与发展（新增长文） -->
+    <section class="brand-story" id="history">
+        <div class="container">
+            <h2>历史与发展</h2>
+            <div class="story-content">
+                <p>西康酒业创立于1981年，由叶长鸿先生发起。企业从最初的区域化小规模酿造起步，逐步形成以“真诚、守信、质优、勤奋、务实、开拓”为核心的企业文化。四十余年来，我们在传承传统固态发酵工艺的同时，持续完善质量管理与食品安全体系，先后通过ISO9001与HACCP体系认证，让每一批酒都做到可追溯、可验证。</p>
+                <p style="margin-top:18px;">我们相信“质量第一”。对西康而言，质量不是一句口号，而是一整套流程的严格执行：原料甄选、曲药自制、窖池养护、酒体设计、长期储存，再到出厂复检与风味复核。我们也同样重视诚信与服务——“质量如生命，诚信重泰山，服务胜广告”。因此，无论是ToB原酒供应还是C端瓶装产品，我们始终把消费者的真实体验放在最前面。</p>
+                <p style="margin-top:18px;">在新阶段，西康从原酒走向消费者，以“好酒回归日常”为方向，推出十五年（设计师瓶）、龙瓶、九年、原浆以及锦观古镇老酒等多层级产品，为礼赠、宴请与日常饮用提供更贴近的选择。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2>产品系列</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="西康十五年外壳+瓶.jpg" alt="西康十五年" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">西康十五年</h3>
+                        <p class="product-desc">15年陈放，由著名设计艺术家许燎源操刀设计的高端礼赠款，体面有面子，宴请/礼赠皆宜。</p>
+                        <div class="product-price">¥368/瓶</div>
+                        <span class="product-tag">设计师瓶</span>
+                        <span class="product-tag">15年陈</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="西康龙瓶外壳+瓶.jpg" alt="西康龙瓶" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">西康龙瓶</h3>
+                        <p class="product-desc">高端龙瓶系列，优级酒体更细腻圆润，香气层次更丰；高辨识度外观，适合礼赠与宴请。</p>
+                        <div class="product-price">¥268/瓶</div>
+                        <span class="product-tag">高端系列</span>
+                        <span class="product-tag">龙瓶设计</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="西康九年外壳+瓶.jpg" alt="西康九年" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">西康九年</h3>
+                        <p class="product-desc">9年陈放，高性价比之选，入口柔、回味净，日常小酌刚刚好。主推性价比。</p>
+                        <div class="product-price">¥188/瓶</div>
+                        <span class="product-tag">9年陈</span>
+                        <span class="product-tag">高性价比</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="西康原浆.jpg" alt="西康原浆" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">西康原浆</h3>
+                        <p class="product-desc">亲民纯粮，香气敞亮、下咽舒服，聚会囤货不心疼。更平价但口感很好。</p>
+                        <div class="product-price">¥86/瓶</div>
+                        <span class="product-tag">亲民</span>
+                        <span class="product-tag">原浆</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="锦观古镇.jpg" alt="锦观古镇" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">锦观古镇</h3>
+                        <p class="product-desc">老酒限量，时间赋予的从容与厚度；珍贵而稳重，适合典藏与厚礼。</p>
+                        <div class="product-price">¥288/瓶</div>
+                        <span class="product-tag">限量</span>
+                        <span class="product-tag">老酒</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #ffffff; padding: 40px; border-radius: 16px;">
+                <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
+                    <img src="散酒.jpg" alt="散酒展示" style="width:480px; max-width:100%; height:320px; object-fit:cover; border-radius:12px; border:2px solid #e4dccf; background:#f7f2e9;"/>
+                    <div style="flex:1; min-width:280px;">
+                        <h3 style="font-size: 28px; margin-bottom: 16px; color: #1f1f1f;">散酒介绍与价目</h3>
+                        <p style="font-size: 20px; color: #2d2d2d; margin-bottom: 15px;">
+                            <strong>锦观古镇</strong> ¥80/斤 | <strong>原浆</strong> ¥50/斤 | <strong>纯粮酒</strong> ¥25/斤
+                        </p>
+                        <p style="font-size: 16px; color: #6b6b6b;">越久越贵、越稳越顺；即便入门款，也把“干净”做到位。线下可免费品鉴，欢迎到店体验。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="certifications" id="certifications">
+        <div class="container">
+            <h2>质量与安全背书</h2>
+            <!-- 三列卡片：上图下文，一体化展示，更融合 -->
+            <div class="cert-columns">
+                <div class="cert-card">
+                    <img class="cert-thumb" src="质量管理体系认证证书.png" alt="ISO9001证书原件"/>
+                    <h3>ISO9001 质量管理体系</h3>
+                    <p>符合 GB/T19001-2016 / ISO9001:2015 标准</p>
+                    <p>覆盖范围：资质范围内浓香型白酒（原酒）的生产</p>
+                    <div class="cert-code">证书编号：06923Q10467R0</div>
+                    <p style="font-size: 14px; margin-top: 15px;">发证日期：2023年05月16日<br>有效期至：2026年05月15日</p>
+                </div>
+                <div class="cert-card">
+                    <img class="cert-thumb" src="危害分析与关键控制点体系认证证书.png" alt="HACCP证书原件"/>
+                    <h3>HACCP 食品安全体系</h3>
+                    <p>符合 危害分析与关键控制点(HACCP)体系认证要求(V1.0)</p>
+                    <p>覆盖范围：资质范围内浓香型白酒（原酒）的生产</p>
+                    <div class="cert-code">证书编号：069HACCP2300171</div>
+                    <p style="font-size: 14px; margin-top: 15px;">发证日期：2023年05月16日<br>有效期至：2026年05月15日</p>
+                </div>
+                <div class="cert-card">
+                    <img class="cert-thumb" src="荣誉展示6.png" alt="名优老窖池群认定"/>
+                    <h3>核心产区名优老窖池群</h3>
+                    <p>四川中国白酒金三角酒业协会认定</p>
+                    <p>2022-2023年期间，行业组织与专家组依据材料审核、实地考察、窖泥评价、原酒鉴评与检测等综合认定。</p>
+                    <div class="cert-code">窖池编码：BJJSJ510183ZL198060001-60105</div>
+                    <p style="font-size: 14px; margin-top: 15px;">认定时间：2023年6月</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #6b6b6b;">
+                沿革说明：当前主要生产在雅安西康新厂区；邛崃“钟灵酒厂”为老厂区历史名称，部分荣誉牌匾/证书沿用该名称且老厂区仍有生产。产品品质与追溯以现行体系与批次为准。
+            </p>
+        </div>
+    </section>
+    
+    <!-- 荣誉墙（新增） -->
+    <section class="brand-story" id="honors">
+        <div class="container">
+            <h2>荣誉与见证</h2>
+            <div class="gallery-grid">
+                <img src="荣誉展示1.png" alt="荣誉1"/>
+                <img src="荣誉展示2.png" alt="荣誉2"/>
+                <img src="荣誉展示3.png" alt="荣誉3"/>
+                <img src="荣誉展示4.png" alt="荣誉4"/>
+                <img src="荣誉展示5.png" alt="荣誉5"/>
+                <img src="荣誉展示8.png" alt="荣誉8"/>
+                <img src="荣誉展示7.png" alt="荣誉7"/>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>联系我们</h2>
+            <div class="contact-info">
+                <p><strong>到店可试饮｜首购有礼</strong></p>
+                <p>📍 地址：乐山市市中区嘉祥路1089、1091号1层</p>
+                <p>📞 电话：<a href="tel:15681325111">156 8132 5111</a></p>
+                <p style="margin-top: 30px; font-size: 16px; color: #6b6b6b;">
+                    好酒回归日常，欢迎到店品鉴，喝得明白、买得安心。
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>西康酒｜1981年建厂 · 中国白酒金三角 · 名优老窖池群</p>
+            <p>全系52°浓香型纯粮酒｜ISO9001 + HACCP双体系认证</p>
+            <p style="margin-top: 20px; font-size: 12px;">饮酒需适量，请勿酒后驾车。</p>
+        </div>
+    </footer>
+</body>
+</html>
