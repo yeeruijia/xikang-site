@@ -12,6 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+        img { max-width: 100%; height: auto; }
         
         body {
             font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif;
@@ -25,6 +26,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        .container--narrow { max-width: 960px; }
         
         /* 头部 */
         header {
@@ -200,6 +202,42 @@
             color: #9a7b4f;
             font-weight: 800;
             margin-bottom: 15px;
+        }
+        
+        /* 全宽图（工艺区）在 PC 的高度 */
+        .fullrow-image { width: 100%; height: 380px; object-fit: cover; border-radius: 16px; border: 2px solid #e4dccf; background: #fff; }
+        .fullrow-image--small { height: 240px; }
+
+        /* 响应式：平板与手机优化 */
+        @media (max-width: 1024px) {
+            .container { padding: 0 16px; }
+            h1 { font-size: 40px; }
+            .slogan { font-size: 28px; }
+            .product-image { height: 340px; }
+            .fullrow-image { height: 320px; }
+        }
+        @media (max-width: 768px) {
+            header { padding: 24px 0; }
+            .logo { width: 88px; height: 88px; margin-bottom: 12px; }
+            h1 { font-size: 28px; }
+            .tagline { font-size: 16px; margin-bottom: 8px; }
+            .slogan { font-size: 20px; }
+            nav { padding: 12px 0; }
+            nav ul { gap: 16px; overflow-x: auto; flex-wrap: nowrap; padding: 0 12px; }
+            nav li { white-space: nowrap; }
+            .brand-story, .products { padding: 48px 0; }
+            .brand-story h2, .products h2 { font-size: 26px; }
+            .story-content { font-size: 16px; }
+            .highlights { gap: 16px; }
+            .highlight-card { padding: 18px; }
+            .product-grid { grid-template-columns: 1fr; gap: 20px; }
+            .product-image { height: 260px; }
+            .fullrow-image { height: 220px; border-radius: 12px; }
+            .fullrow-image--small { height: 180px; }
+        }
+        @media (max-width: 360px) {
+            .product-image { height: 220px; }
+            .story-content { font-size: 15px; }
         }
     </style>
     <script>
