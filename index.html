@@ -44,10 +44,12 @@
         }
         
         h1 {
-            font-size: 48px;
-            color: #1f1f1f;
+            font-size: 56px;
+            color: #8b6b3c;
             margin-bottom: 10px;
             font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
         }
         
         .tagline {
@@ -100,13 +102,6 @@
             background: #ffffff;
         }
         
-        .brand-story h2 {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #1f1f1f;
-        }
-        
         .story-content {
             max-width: 900px;
             margin: 0 auto;
@@ -147,19 +142,42 @@
             background: #f7f2e9;
         }
         
-        .products h2 {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #1f1f1f;
-        }
-        
-        /* 统一所有section的h2标题大小 */
+        /* 统一所有section的h2标题大小（和导航字体大小一致） */
         section h2 {
-            font-size: 42px;
+            font-size: 26px;
             text-align: center;
             margin-bottom: 40px;
             color: #1f1f1f;
+            font-weight: 600;
+        }
+        
+        /* 品牌故事背景图 */
+        .brand-story {
+            position: relative;
+        }
+        
+        .brand-story#story {
+            background-image: url('西康酒业.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .brand-story#story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 0;
+        }
+        
+        .brand-story#story .container {
+            position: relative;
+            z-index: 1;
         }
         
         /* 质量与安全背书 */
@@ -209,6 +227,17 @@
             height: 420px;
         }
         
+        /* 质量与安全背书第一张图居中 */
+        .cert-card:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .cert-card:nth-child(1) .cert-thumb {
+            margin: 0 auto;
+        }
+        
         /* 荣誉与见证图片 */
         .gallery-grid {
             display: grid;
@@ -219,8 +248,7 @@
         
         .gallery-grid img {
             width: 100%;
-            height: auto;
-            max-height: 200px;
+            height: 240px;
             object-fit: contain;
             border: 2px solid #e4dccf;
             border-radius: 8px;
@@ -232,13 +260,6 @@
         .contact {
             padding: 80px 0;
             background: #f7f2e9;
-        }
-        
-        .contact h2 {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #1f1f1f;
         }
         
         .contact-info {
@@ -331,19 +352,47 @@
         @media (max-width: 768px) {
             header { padding: 24px 0; }
             .logo { width: 88px; height: 88px; margin-bottom: 12px; }
-            h1 { font-size: 28px; }
+            h1 { font-size: 36px; color: #8b6b3c; font-weight: 900; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); letter-spacing: 1px; }
             .tagline { font-size: 16px; margin-bottom: 8px; }
             .slogan { font-size: 20px; }
             nav { padding: 12px 0; }
-            /* 导航在手机端换行显示并缩小间距/字号，避免“显示不全” */
-            nav ul { gap: 10px; overflow-x: visible; flex-wrap: wrap; justify-content: center; padding: 0 8px; }
-            nav a { font-size: 24px; padding: 6px 10px; }
+            /* 导航在手机端横向滑动 */
+            nav ul { 
+                gap: 20px; 
+                overflow-x: auto; 
+                flex-wrap: nowrap; 
+                justify-content: flex-start; 
+                padding: 0 16px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            nav ul::-webkit-scrollbar {
+                height: 4px;
+            }
+            nav ul::-webkit-scrollbar-thumb {
+                background: #9a7b4f;
+                border-radius: 2px;
+            }
+            nav a { 
+                font-size: 24px; 
+                padding: 6px 10px; 
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
             .brand-story, .products, .certifications, .contact { padding: 48px 0; }
-            section h2 { font-size: 28px; margin-bottom: 24px; }
+            /* 手机端品牌故事背景图 */
+            .brand-story#story {
+                background-size: cover;
+                background-position: center;
+            }
+            .brand-story#story::before {
+                background: rgba(255, 255, 255, 0.9);
+            }
+            section h2 { font-size: 26px; margin-bottom: 24px; }
             .cert-card:nth-child(1) .cert-thumb,
             .cert-card:nth-child(2) .cert-thumb { height: 340px; }
             .cert-thumb { height: 240px; }
-            .gallery-grid img { max-height: 140px; border: 2px solid #e4dccf; border-radius: 8px; padding: 8px; background: #fff; }
+            .gallery-grid img { height: 240px; border: 2px solid #e4dccf; border-radius: 8px; padding: 8px; background: #fff; }
             .story-content { font-size: 16px; }
             .highlights { gap: 16px; }
             .highlight-card { padding: 18px; }
