@@ -248,6 +248,28 @@
           if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
           img.setAttribute('decoding', 'async');
         });
+
+        // 浏览器是否支持 WebP（简单检测）
+        function canUseWebp() {
+          if (!self.createImageBitmap) return false;
+          const webpData = 'data:image/webp;base64,UklGRiIAAABXRUJQVlA4WAoAAAAQAAAAHwAAHwAAQUxQSAwAAAAB';
+          return fetch(webpData).then(r => r.blob()).then(b => createImageBitmap(b).then(() => true, () => false)).catch(() => false);
+        }
+
+        // 将 .jpg/.png 自动升级为 .webp（若存在且支持）
+        canUseWebp().then(function (ok) {
+          if (!ok) return;
+          document.querySelectorAll('img').forEach(function (img) {
+            var src = img.getAttribute('src') || '';
+            var lower = src.toLowerCase();
+            if (!(lower.endsWith('.jpg') || lower.endsWith('.jpeg') || lower.endsWith('.png'))) return;
+            var webp = src.replace(/\.jpg$|\.jpeg$|\.png$/i, '.webp');
+            // 仅当服务器存在对应 .webp 时才替换，避免 404
+            fetch(webp, { method: 'HEAD' }).then(function (r) {
+              if (r.ok) img.src = webp;
+            }).catch(function(){});
+          });
+        });
       });
     </script>
 </head>
