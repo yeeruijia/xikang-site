@@ -337,20 +337,22 @@
             nav { padding: 12px 0; }
             /* 导航在手机端换行显示并缩小间距/字号，避免“显示不全” */
             nav ul { gap: 10px; overflow-x: visible; flex-wrap: wrap; justify-content: center; padding: 0 8px; }
-            nav a { font-size: 20px; padding: 4px 8px; }
+            nav a { font-size: 24px; padding: 6px 10px; }
             .brand-story, .products, .certifications, .contact { padding: 48px 0; }
             section h2 { font-size: 28px; margin-bottom: 24px; }
             .cert-card:nth-child(1) .cert-thumb,
-            .cert-card:nth-child(2) .cert-thumb { height: 280px; }
+            .cert-card:nth-child(2) .cert-thumb { height: 340px; }
             .cert-thumb { height: 240px; }
-            .gallery-grid img { max-height: 140px; }
+            .gallery-grid img { max-height: 140px; border: 2px solid #e4dccf; border-radius: 8px; padding: 8px; background: #fff; }
             .story-content { font-size: 16px; }
             .highlights { gap: 16px; }
             .highlight-card { padding: 18px; }
             .product-grid { grid-template-columns: 1fr; gap: 20px; }
             .product-image { max-height: 220px; }
             .fullrow-image { max-height: 190px; border-radius: 12px; }
-            .fullrow-image--small { max-height: 150px; }
+            .fullrow-image--small { max-height: 120px; }
+            /* 散酒图片在手机端缩小 */
+            img[src="散酒.jpg"] { max-width: 280px !important; }
             /* 联系我们区块也压缩内边距，整体更紧凑 */
             #contact .contact-info p { margin-bottom: 12px; }
         }
